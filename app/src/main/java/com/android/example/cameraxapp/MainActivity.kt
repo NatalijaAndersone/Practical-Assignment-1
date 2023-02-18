@@ -1,7 +1,6 @@
 package com.android.example.cameraxapp
 
 import android.Manifest
-import android.annotation.SuppressLint
 import android.content.ContentValues
 import android.content.pm.PackageManager
 import android.os.Build
@@ -9,9 +8,6 @@ import android.os.Bundle
 import android.provider.MediaStore
 import androidx.appcompat.app.AppCompatActivity
 import androidx.camera.core.ImageCapture
-import androidx.camera.video.Recorder
-import androidx.camera.video.Recording
-import androidx.camera.video.VideoCapture
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.android.example.cameraxapp.databinding.ActivityMainBinding
@@ -22,15 +18,12 @@ import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.camera.core.Preview
 import androidx.camera.core.CameraSelector
 import android.util.Log
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import androidx.camera.core.ImageAnalysis
 import androidx.camera.core.ImageCaptureException
 import androidx.camera.core.ImageProxy
-import androidx.camera.video.FallbackStrategy
-import androidx.camera.video.MediaStoreOutputOptions
-import androidx.camera.video.Quality
-import androidx.camera.video.QualitySelector
-import androidx.camera.video.VideoRecordEvent
-import androidx.core.content.PermissionChecker
 import java.nio.ByteBuffer
 import java.text.SimpleDateFormat
 import java.util.Locale
@@ -43,8 +36,6 @@ class MainActivity : AppCompatActivity() {
 
     private var imageCapture: ImageCapture? = null
 
-    private var videoCapture: VideoCapture<Recorder>? = null
-    private var recording: Recording? = null
 
     private lateinit var cameraExecutor: ExecutorService
 
@@ -194,6 +185,37 @@ class MainActivity : AppCompatActivity() {
             }.toTypedArray()
     }
 
+    //Lai parādītos Menu ar pogām
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        val inflater: MenuInflater = menuInflater
+        inflater.inflate(R.menu.menu, menu)
+        return true
+    }
+
+    //Nospiest menu items
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        // Handle item selection
+        return when (item.itemId) {
+            R.id.take_image -> {
+
+                true
+            }
+            R.id.show_images -> {
+
+                true
+            }
+            R.id.audio -> {
+
+                true
+            }
+            R.id.delete -> {
+
+                true
+            }
+
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
 }
 
 private class LuminosityAnalyzer(private val listener: LumaListener) : ImageAnalysis.Analyzer {
@@ -216,4 +238,6 @@ private class LuminosityAnalyzer(private val listener: LumaListener) : ImageAnal
 
         image.close()
     }
+
+
 }
