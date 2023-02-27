@@ -44,6 +44,7 @@ class MainActivity : AppCompatActivity() {
         viewBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(viewBinding.root)
 
+
         // Request camera permissions
         if (allPermissionsGranted()) {
             startCamera()
@@ -57,6 +58,8 @@ class MainActivity : AppCompatActivity() {
 
         cameraExecutor = Executors.newSingleThreadExecutor()
     }
+
+
 
     override fun onRequestPermissionsResult(
         requestCode: Int, permissions: Array<String>, grantResults:
@@ -116,8 +119,23 @@ class MainActivity : AppCompatActivity() {
         )
     }
 
+//    private fun setupImageView() {
+//        val imgResId = R.drawable.ic_launcher_background
+//        var resId = imgResId
+//        viewBinding.imageView.setImageResource(imgResId)
+//
+//        viewBinding.menu.show_image.setOnClickListener {
+//            resId =
+//                if (resId == R.drawable.ic_launcher_background)
+//                    R.mipmap.ic_launcher
+//                else
+//                    R.drawable.ic_launcher_background
+//            viewBinding.imageView.setImageResource(resId)
+//        }
 
-    private fun startCamera() {
+
+
+        private fun startCamera() {
         val cameraProviderFuture = ProcessCameraProvider.getInstance(this)
 
         cameraProviderFuture.addListener({
@@ -196,11 +214,7 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         // Handle item selection
         return when (item.itemId) {
-            R.id.take_image -> {
-
-                true
-            }
-            R.id.show_images -> {
+            R.id.show_image -> {
 
                 true
             }

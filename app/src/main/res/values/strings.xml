@@ -1,9 +1,12 @@
 <resources>
-    <string name="app_name">CameraXApp</string>
+    <string name="app_name">PW1</string>
     <string name="take_photo">Take Photo</string>
 
     <string name="audio">Audio</string>
     <string name="take_image">Take Image</string>
-    <string name="show_image">Show Image</string>
+    <string name="show_image">Show Images</string>
     <string name="delete">Delete</string>
+
+    <string name="this_is_imageview">This is imageView</string>
+
 </resources>
